@@ -1,0 +1,22 @@
+{
+  "name": "bower_components",
+  "description": "",
+  "main": "",
+  "authors": [
+    "manh2911 <manh291196@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/manh2911/shoptreem",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "https://github.com/twbs/bootstrap.git#^3.3.7",
+    "Font-Awesome": "https://github.com/FortAwesome/Font-Awesome.git#^5.13.0"
+  }
+}
