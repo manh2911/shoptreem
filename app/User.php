@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ROLE_ADMIN = 1;
+    const ROLE_MANAGEMENT = 2;
+    const ROLE_CLIENT = 3;
+    const DEFAULT_AVATAR = 'upload/image_user/avatar_default.png';
+
     /**
      * The attributes that are mass assignable.
      *
