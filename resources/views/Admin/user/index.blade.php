@@ -6,24 +6,28 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <div class="row">
-                    <div class="col-md-3">
-                        <select class="form-control form-control-sm">
-                            <option value="0">Choose action</option>
-                            <option value="delete">Delete</option>
-                        </select>
+                <form action="{{ route('admin.user.action') }}" method="post">
+                    @csrf
+                    <div class="row">
+                        <input type="hidden" name="arr_chk" id="arr_chk" value="">
+                        <div class="col-md-3">
+                            <select class="form-control form-control-sm" name="action" id="action">
+                                <option value="0">Choose action</option>
+                                <option value="{{ \App\Helper\ServiceAction::ACTION_DELETE }}">Delete</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="submit-action" class="btn btn-primary form-control-sm">
+                                <span class="text" style="color: #ffffff">Submit</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <a style="float: right" class="btn btn-primary btn-circle .btn-sm" title="Add" href="{{ route('admin.user.create')}}">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <a href="#" class="btn btn-primary form-control-sm">
-                            <span class="text">Submit</span>
-                        </a>
-                    </div>
-                    <div class="col-md-6">
-                        <a style="float: right" class="btn btn-primary btn-circle .btn-sm" title="Add" href="{{ route('admin.user.create')}}">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -35,6 +39,7 @@
                             </th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>Update</th>
                             <th>Action</th>
                         </tr>
@@ -43,16 +48,26 @@
                         @foreach($users as $user)
                         <tr>
                             <td>
-                                <input class="form-check-input chk-table select-one-item" type="checkbox" id="">
+                                <input class="form-check-input chk-table select-one-item" type="checkbox" id="{{ $user->id }}">
                             </td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->update }}</td>
                             <td>
-                                <a href="#">
+                                <?php
+                                    if ($user->role == \App\User::ROLE_ADMIN) echo 'ADMIN';
+                                    if ($user->role == \App\User::ROLE_MANAGEMENT) echo 'MANAGEMENT';
+                                    if ($user->role == \App\User::ROLE_CLIENT) echo 'CLIENT';
+                                ?>
+                            </td>
+                            <td>{{ isset($user->updated_at) ? date("d/m/Y", strtotime($user->updated_at)) : '' }}</td>
+                            <td>
+                                <a href="{{ route('admin.user.show', $user->id) }}">
+                                    <i class="fas fa-eye" title="Profile"></i>
+                                </a>
+                                <a href="{{ route('admin.user.edit', $user->id) }}">
                                     <i class="fas fa-tools" title="Edit"></i>
                                 </a>
-                                <a href="#">
+                                <a href="{{ route('admin.user.delete', $user->id) }}" onclick="return confirmDelete()">
                                     <i class="fas fa-trash" title="Delete"></i>
                                 </a>
 {{--                                <a href="#">--}}
@@ -69,3 +84,6 @@
 
     </div>
 @endsection
+@push('scripts')
+    <script src="{{ asset('Admin/js/ste-user.js') }}"></script>
+@endpush
