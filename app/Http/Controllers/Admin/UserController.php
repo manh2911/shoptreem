@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helper\ServiceAction;
 use App\Http\Controllers\Controller;
-use http\Client\Curl\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,10 @@ class UserController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
         if($validation->passes()) {
+            $user_logged = Auth::user();
+            if ($user_logged->role == \App\User::ROLE_MANAGEMENT && $request->role == \App\User::ROLE_ADMIN) {
+                return redirect()->back()->withInput($request->input())->with('error_message', 'Permission denied!');
+            }
             $user = new \App\User();
             $user->role = $request->role;
             $user->name = $request->name;
@@ -65,15 +70,10 @@ class UserController extends Controller
             }
             $user->save();
 
+            return redirect()->route('admin.user.index')->with('flash_message', 'Success!');
         } else {
-            $errors = $validation->errors();
-            $errors =  json_decode($errors);
-            return response()->json([
-                'success' => false,
-                'message' => $errors
-            ], 422);
+            return redirect()->back()->withInput($request->input())->withErrors($validation->errors());
         }
-
     }
 
     /**
@@ -84,7 +84,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = \App\User::findOrFail($id);
+        $user_logged = Auth::user();
+        if ($user_logged->role == \App\User::ROLE_ADMIN || ($user_logged->role == \App\User::ROLE_MANAGEMENT && ($user_logged->id == $id || $user->role == \App\User::ROLE_CLIENT))) {
+            return view('Admin.user.show',compact('user'));
+        } else {
+            return redirect()->route('admin.user.index')->with('error_message', 'Permission denied!');
+        }
     }
 
     /**
@@ -95,7 +101,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = \App\User::findOrFail($id);
+        $user_logged = Auth::user();
+        if ($user_logged->role == \App\User::ROLE_ADMIN || ($user_logged->role == \App\User::ROLE_MANAGEMENT && ($user_logged->id == $id || $user->role == \App\User::ROLE_CLIENT))) {
+            return view('Admin.user.edit',compact('user'));
+        } else {
+            return redirect()->route('admin.user.index')->with('error_message', 'Permission denied!');
+        }
     }
 
     /**
@@ -107,7 +119,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(), [
+            'role' => 'required',
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
+        ]);
+        if($validation->passes()) {
+            $user_logged = Auth::user();
+            if ($user_logged->role == \App\User::ROLE_MANAGEMENT && $request->role == \App\User::ROLE_ADMIN) {
+                return redirect()->back()->withInput($request->input())->with('error_message', 'Permission denied!');
+            }
+            $user = \App\User::findOrFail($id);
+            $user->role = $request->role;
+            $user->name = $request->name;
+            if (isset($request->image)) {
+                $imageName = time() . '.' . request()->image->getClientOriginalExtension();
+                request()->image->move(public_path('upload/image_user'), $imageName);
+                $user->image = 'upload/image_user' . $imageName;
+            }
+            $user->save();
+
+            return redirect()->route('admin.user.index')->with('flash_message', 'Success!');
+        } else {
+            return redirect()->back()->withInput($request->input())->withErrors($validation->errors());
+        }
     }
 
     /**
@@ -116,8 +151,103 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $errors = [];
+        $user_logged = Auth::user();
+        $this->deleteItem($id, $errors, $user_logged);
+
+        if (count($errors) > 0) {
+            return redirect()->route('admin.user.index')->withErrors($errors);
+        } else {
+            return redirect()->route('admin.user.index')->with('flash_message', 'Success!');
+        }
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $validation = Validator::make($request->all(), [
+            'new_password' => 'required|same:re_new_password',
+            're_new_password' => 'required',
+        ]);
+        if($validation->passes()) {
+            $user = \App\User::findOrFail($id);
+            $password = Hash::make($request->new_password);
+            $user->update([
+                'password' => $password
+            ]);
+
+            return redirect()->route('admin.user.show', $id)->with('flash_message', 'Success!');
+        } else {
+            return redirect()->back()->withInput($request->input())->withErrors($validation->errors());
+        }
+    }
+
+    public function action(Request $request)
+    {
+        $errors = [];
+        $arr_chk = explode(",", $request->arr_chk);
+        if ($request->action == ServiceAction::ACTION_DELETE) {
+            $this->actionDelete($arr_chk, $errors);
+        } else {
+            return redirect()->route('admin.user.index');
+        }
+
+        if (count($errors) > 0) {
+            return redirect()->route('admin.user.index')->withErrors($errors);
+        } else {
+            return redirect()->route('admin.user.index')->with('flash_message', 'Success!');
+        }
+    }
+
+    public function deleteItem($id, &$errors, $user_logged)
+    {
+        $user = \App\User::find($id);
+        if ($user) {
+            $role = $user->role;
+            switch ($user_logged->role) {
+                case \App\User::ROLE_MANAGEMENT:
+                    if ($role == \App\User::ROLE_CLIENT) {
+                        $user->delete();
+                    } else {
+                        $errors[] = 'Permission denied';
+                    }
+                    break;
+                default:
+                    if ($user_logged->role == $user->role) {
+                        $errors[] = 'Permission denied';
+                    } else {
+                        $user->delete();
+                    }
+            }
+        } else {
+            $errors[] = 'Not Found';
+        }
+    }
+
+    public function actionDelete($arr_chks, &$errors)
+    {
+        DB::beginTransaction();
+        try {
+            $user_logged = Auth::user();
+
+            foreach ($arr_chks as $id) {
+                $this->deleteItem($id, $errors, $user_logged);
+                if (count($errors) > 0) {
+                    DB::rollBack();
+
+                    return $errors;
+                }
+            }
+
+            DB::commit();
+
+            return $errors;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $errors = $e->getMessage();
+
+            return $errors;
+        }
     }
 }

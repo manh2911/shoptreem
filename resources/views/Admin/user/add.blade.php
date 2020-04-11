@@ -7,7 +7,7 @@
         <div class="card shadow mb-4">
             <div class="panel-body col-lg-8">
                 <form action="{{ route('admin.user.store') }}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
+                    {{csrf_field()}}
                     <br>
                     <div class="form-group row">
                         <div class="col-md-3">
@@ -16,8 +16,8 @@
                         <div class="col-md-9">
                             <select class="form-control form-control-sm" name="role" required>
                                 <option value="{{ \App\User::ROLE_MANAGEMENT }}">MANAGEMENT</option>
-                                <option value="{{ \App\User::ROLE_ADMIN }}">ADMIN</option>
-                                <option value="{{ \App\User::ROLE_CLIENT }}">CLIEN</option>
+                                <option value="{{ \App\User::ROLE_ADMIN }}" {{ old('role') == \App\User::ROLE_ADMIN ? 'selected' : '' }}>ADMIN</option>
+                                <option value="{{ \App\User::ROLE_CLIENT }}" {{ old('role') == \App\User::ROLE_CLIENT ? 'selected' : '' }}>CLIENT</option>
                             </select>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <p>Name:</p>
                         </div>
                         <div class="col-md-9">
-                            <input class="form-control form-control-sm"  name="name" required>
+                            <input class="form-control form-control-sm"  name="name" value="{{ old('name') }}" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -34,7 +34,7 @@
                             <p>Email:</p>
                         </div>
                         <div class="col-md-9">
-                            <input type="email" class="form-control form-control-sm"  name="email" required>
+                            <input type="email" class="form-control form-control-sm"  name="email" value="{{ old('email') }}" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -58,7 +58,7 @@
                             <p>Avatar:</p>
                         </div>
                         <div class="col-md-9">
-                            <input type="file" class="form-control-sm" id="input-img-avatar" name="image" value="">
+                            <input type="file" class="form-control-sm" id="input-img-avatar" name="image" value="{{ old('image') }}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -66,8 +66,6 @@
                             <img class="img-slide-category" src="#" id="img-avatar" alt="Image">
                         </div>
                     </div>
-                    <input type="hidden" id="url" name="url" value="admin/user">
-                    <input type="hidden" id="method" name="method" value="post">
                     <div class="form-group">
                         <button id="submit" class="btn btn-sm btn-primary">Submit</button>
                     </div>
