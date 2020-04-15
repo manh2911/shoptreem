@@ -12,7 +12,7 @@ function readURL(input, id) {
 
 $("#input-img-icon").change(function() {
     readURL(this, 'img-icon');
-    $("#img-icon").css("background", '#0f0f0f');
+    $("#img-icon").css("background", 'gray');
 });
 
 $("#input-img-slide").change(function() {
@@ -21,4 +21,8 @@ $("#input-img-slide").change(function() {
 
 $("#input-img-avatar").change(function() {
     readURL(this, 'img-avatar');
+});
+
+$("#input-img").change(function() {
+    readURL(this, 'img-show');
 });

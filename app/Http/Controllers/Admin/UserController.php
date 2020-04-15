@@ -49,7 +49,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|same:re_password',
             're_password' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         if($validation->passes()) {
             $user_logged = Auth::user();
@@ -122,7 +122,7 @@ class UserController extends Controller
         $validation = Validator::make($request->all(), [
             'role' => 'required',
             'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         if($validation->passes()) {
             $user_logged = Auth::user();
@@ -130,14 +130,19 @@ class UserController extends Controller
                 return redirect()->back()->withInput($request->input())->with('error_message', 'Permission denied!');
             }
             $user = \App\User::findOrFail($id);
-            $user->role = $request->role;
-            $user->name = $request->name;
+            $image = $user->image;
+
             if (isset($request->image)) {
                 $imageName = time() . '.' . request()->image->getClientOriginalExtension();
                 request()->image->move(public_path('upload/image_user'), $imageName);
-                $user->image = 'upload/image_user' . $imageName;
+                $image = 'upload/image_user/' . $imageName;
             }
-            $user->save();
+
+            $user->update([
+                'name' => $request->name,
+                'role' => $request->role,
+                'image' => $image,
+            ]);
 
             return redirect()->route('admin.user.index')->with('flash_message', 'Success!');
         } else {
@@ -187,10 +192,12 @@ class UserController extends Controller
     {
         $errors = [];
         $arr_chk = explode(",", $request->arr_chk);
-        if ($request->action == ServiceAction::ACTION_DELETE) {
-            $this->actionDelete($arr_chk, $errors);
-        } else {
-            return redirect()->route('admin.user.index');
+        switch ($request->action) {
+            case ServiceAction::ACTION_DELETE:
+                $this->actionDelete($arr_chk, $errors);
+                break;
+            default:
+                return redirect()->route('admin.category.index');
         }
 
         if (count($errors) > 0) {
