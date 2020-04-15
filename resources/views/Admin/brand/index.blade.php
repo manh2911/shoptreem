@@ -2,11 +2,11 @@
 @section('content')
     <div class="container-fluid">
 
-        <h2 class="h3 mb-4 text-gray-800">Categories</h2>
+        <h2 class="h3 mb-4 text-gray-800">Brands</h2>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <form action="{{ route('admin.category.action') }}" method="post">
+                <form action="{{ route('admin.brand.action') }}" method="post">
                     @csrf
                     <div class="row">
                         <input type="hidden" name="arr_chk" id="arr_chk" value="">
@@ -22,7 +22,7 @@
                             </button>
                         </div>
                         <div class="col-md-6">
-                            <a style="float: right" class="btn btn-primary btn-circle .btn-sm" title="Add" href="{{ route('admin.category.create')}}">
+                            <a style="float: right" class="btn btn-primary btn-circle .btn-sm" title="Add" href="{{ route('admin.brand.create')}}">
                                 <i class="fas fa-plus"></i>
                             </a>
                         </div>
@@ -37,33 +37,26 @@
                             <th>
                                 <input class="form-check-input chk-table select-all-item" type="checkbox" id="select-all-item">
                             </th>
-                            <th>ID</th>
                             <th>Name</th>
-                            <th>Parent ID</th>
                             <th>Update</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
+                        @foreach($brands as $brand)
                             <tr>
                                 <td>
-                                    <input class="form-check-input chk-table select-one-item" type="checkbox" id="{{ $category->id }}">
+                                    <input class="form-check-input chk-table select-one-item" type="checkbox" id="{{ $brand->id }}">
                                 </td>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->parent_id }}</td>
-                                <td>{{ isset($category->updated_at) ? date("d/m/Y", strtotime($category->updated_at)) : '' }}</td>
+                                <td>{{ $brand->name }}</td>
+                                <td>{{ isset($brand->updated_at) ? date("d/m/Y", strtotime($brand->updated_at)) : '' }}</td>
                                 <td>
-                                    <a href="{{ route('admin.category.edit', $category->id) }}">
+                                    <a href="{{ route('admin.brand.edit', $brand->id) }}">
                                         <i class="fas fa-tools" title="Edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.category.delete', $category->id) }}" onclick="return confirmDelete()">
+                                    <a href="{{ route('admin.brand.delete', $brand->id) }}" onclick="return confirmDelete()">
                                         <i class="fas fa-trash" title="Delete"></i>
                                     </a>
-{{--                                    <a href="#">--}}
-{{--                                        <i class="fas fa-check-circle" title="Active"></i>--}}
-{{--                                    </a>--}}
                                 </td>
                             </tr>
                         @endforeach

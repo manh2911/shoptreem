@@ -3,6 +3,7 @@
 Route::get('/', 'Admin\HomeController@index')->name('index');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
+//user
 Route::resource('user', 'Admin\UserController')->only([
     'index', 'create', 'store', 'edit', 'update', 'show'
 ]);
@@ -12,5 +13,29 @@ Route::group(['prefix'=>'user'], function(){
     Route::post('action', 'Admin\UserController@action')->name('user.action');
 });
 
+//category
+Route::resource('category', 'Admin\CategoryController')->only([
+    'index', 'create', 'store', 'edit', 'update'
+]);
+Route::group(['prefix'=>'category'], function(){
+    Route::get('{id}/delete', 'Admin\CategoryController@delete')->name('category.delete');
+    Route::post('action', 'Admin\CategoryController@action')->name('category.action');
+});
 
-Route::resource('category', 'Admin\CategoryController');
+//brand
+Route::resource('brand', 'Admin\BrandController')->only([
+    'index', 'create', 'store', 'edit', 'update'
+]);
+Route::group(['prefix'=>'brand'], function(){
+    Route::get('{id}/delete', 'Admin\BrandController@delete')->name('brand.delete');
+    Route::post('action', 'Admin\BrandController@action')->name('brand.action');
+});
+
+//color
+Route::resource('color', 'Admin\ColorController')->only([
+    'index', 'create', 'store', 'edit', 'update'
+]);
+Route::group(['prefix'=>'color'], function(){
+    Route::get('{id}/delete', 'Admin\ColorController@delete')->name('color.delete');
+    Route::post('action', 'Admin\ColorController@action')->name('color.action');
+});

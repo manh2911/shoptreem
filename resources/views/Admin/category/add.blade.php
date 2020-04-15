@@ -5,7 +5,7 @@
         <h1 class="h3 mb-2 text-gray-800">Add Category</h1>
         <div class="card shadow mb-4">
             <div class="panel-body col-lg-8">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
                     <br>
                     <div class="form-group row">
@@ -13,9 +13,9 @@
                             <p>Parent Category:</p>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control form-control-sm" name="parentId" required>
+                            <select class="form-control form-control-sm" name="parent_id" required>
                                 <option value="0">Choose parent category</option>
-                                <option value="0">a</option>
+                                <?php cate_parent($parents) ?>
                             </select>
                         </div>
                     </div>
