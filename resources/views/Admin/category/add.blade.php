@@ -13,9 +13,11 @@
                             <p>Parent Category:</p>
                         </div>
                         <div class="col-md-9">
-                            <select class="form-control form-control-sm" name="parent_id" required>
+                            <select class="form-control form-control-sm select2" name="parent_id" required>
                                 <option value="0">Choose parent category</option>
-                                <?php cate_parent($parents) ?>
+                                @foreach($parents as $parent)
+                                <option value="{{ $parent->id }}" {{ (collect(old('parent_id'))->contains($parent->id)) ? 'selected':'' }}>{{ $parent->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

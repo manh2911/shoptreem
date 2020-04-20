@@ -21,7 +21,7 @@
                                 <form class="user" action="{{ route('admin.postLogin') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>
+                                        <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="{{ old('email') }}" placeholder="Enter Email Address..." required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required>

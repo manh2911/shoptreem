@@ -8,8 +8,13 @@ class ImageDetailProduct extends Model
 {
     protected $table = 'image_detail_products';
 
-    public function detailProduct()
+    protected $fillable = [
+        'image',
+        'product_id'
+    ];
+
+    public function product()
     {
-        return $this->belongsTo(DetailProduct::class, 'detail_product_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }

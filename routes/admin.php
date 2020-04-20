@@ -31,11 +31,13 @@ Route::group(['prefix'=>'brand'], function(){
     Route::post('action', 'Admin\BrandController@action')->name('brand.action');
 });
 
-//color
-Route::resource('color', 'Admin\ColorController')->only([
+//product
+Route::resource('product', 'Admin\ProductController')->only([
     'index', 'create', 'store', 'edit', 'update'
 ]);
-Route::group(['prefix'=>'color'], function(){
-    Route::get('{id}/delete', 'Admin\ColorController@delete')->name('color.delete');
-    Route::post('action', 'Admin\ColorController@action')->name('color.action');
+Route::group(['prefix'=>'product'], function(){
+    Route::get('{id}/delete', 'Admin\ProductController@delete')->name('product.delete');
+    Route::post('action', 'Admin\ProductController@action')->name('product.action');
+    Route::get('{id}/active', 'Admin\ProductController@active')->name('product.active');
+    Route::get('{id}/inactive', 'Admin\ProductController@inactive')->name('product.inactive');
 });

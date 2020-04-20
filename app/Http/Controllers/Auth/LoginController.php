@@ -61,7 +61,7 @@ class LoginController extends Controller
 //                return redirect()->route('home');
             }
         }
-        return redirect()->back()->withErrors('Email or Password wrong');
+        return redirect()->back()->withInput()->withErrors('Email or Password wrong');
     }
 
     public function logout(Request $request)

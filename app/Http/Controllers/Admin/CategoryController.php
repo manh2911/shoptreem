@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Helper\ServiceAction;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $parents = Category::select('id','name','parent_id')->get()->toArray();
+        $parents = Category::where('parent_id', 0)->get();
 
         return view('Admin.category.add', compact('parents'));
     }
@@ -105,7 +106,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        $parents = Category::select('id','name','parent_id')->get()->toArray();
+        $parents = Category::where('parent_id', 0)->get();
 
         return view('Admin.category.edit', compact('parents', 'category'));
     }
@@ -228,8 +229,11 @@ class CategoryController extends Controller
     public function deleteItem($id, &$errors)
     {
         $categories = Category::where('parent_id', $id)->get()->toArray();
+        $products = Product::where('category_id', $id)->get()->toArray();
         if (count($categories) > 0) {
             $errors[] = 'This category has subcategories';
+        } elseif (count($products) > 0) {
+            $errors[] = 'This category has products';
         } else {
             $category = Category::find($id);
             $category->delete();

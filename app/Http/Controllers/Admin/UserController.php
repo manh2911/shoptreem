@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helper\ServiceAction;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -211,6 +212,11 @@ class UserController extends Controller
     {
         $user = \App\User::find($id);
         if ($user) {
+            $products = Product::where('user_id', $id)->get()->toArray();
+            if (count($products) > 0) {
+                $errors[] = 'This user has products';
+                return;
+            }
             $role = $user->role;
             switch ($user_logged->role) {
                 case \App\User::ROLE_MANAGEMENT:
