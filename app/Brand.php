@@ -8,7 +8,10 @@ class Brand extends Model
 {
     protected $table = 'brands';
 
-    protected $fillable = ['name', 'image'];
+    protected $fillable = [
+        'name',
+        'image'
+    ];
 
     public function products()
     {

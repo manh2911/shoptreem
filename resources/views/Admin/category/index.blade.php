@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-md-3">
                             <button class="btn btn-primary form-control-sm">
-                                <span class="text btn-submit-action">Submit</span>
+                                <span class="text white-text">Submit</span>
                             </button>
                         </div>
                         <div class="col-md-6">

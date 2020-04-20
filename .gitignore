@@ -14,3 +14,4 @@ yarn-error.log
 composer.lock
 public/.htaccess
 /public/bower_components
+/public/ckfinder
