@@ -33,24 +33,14 @@
             <span>Category</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.category.index')}}">
+        <a class="nav-link" href="{{ route('admin.product.index')}}">
             <i class="fab fa-product-hunt"></i>
             <span>Product</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.category.index')}}">
-            <i class="fas fa-bars"></i>
-            <span>Detail Product</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.brand.index')}}">
             <i class="fas fa-trademark"></i>
             <span>Brand</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.color.index')}}">
-            <i class="fas fa-palette"></i>
-            <span>Color</span></a>
     </li>
 
     <!-- Divider -->

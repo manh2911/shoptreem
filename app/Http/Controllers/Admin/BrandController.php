@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Brand;
 use App\Helper\ServiceAction;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -187,7 +188,12 @@ class BrandController extends Controller
 
     public function deleteItem($id, &$errors)
     {
-        $brand = Brand::find($id);
-        $brand->delete();
+        $products = Product::where('brand_id', $id)->get()->toArray();
+        if (count($products) > 0) {
+            $errors[] = 'This brand has product';
+        } else {
+            $brand = Brand::find($id);
+            $brand->delete();
+        }
     }
 }

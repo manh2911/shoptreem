@@ -21,6 +21,7 @@
     <link href="{{ asset('Admin/css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('Admin/css/ste.css') }}" rel="stylesheet">
     <link href="{{ asset('Admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
 
 </head>

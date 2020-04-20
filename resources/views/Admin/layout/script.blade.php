@@ -12,6 +12,7 @@
 <script src="{{ asset('Admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('Admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 @stack('scripts')
 <script>
