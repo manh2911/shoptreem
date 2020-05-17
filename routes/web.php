@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/admin/login', 'Auth\LoginController@getLogin')->name('admin.getLogin');
 Route::post('/admin/login', 'Auth\LoginController@postLogin')->name('admin.postLogin');
+
+Route::get('/', 'Client\HomeController@index')->name('index');
+
+Route::get('/clone', 'CloneHtmlController@clone');

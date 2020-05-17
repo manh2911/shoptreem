@@ -15,3 +15,4 @@ composer.lock
 public/.htaccess
 /public/bower_components
 /public/ckfinder
+/public/upload

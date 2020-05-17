@@ -1,0 +1,69 @@
+.ac_results .ac_over {
+    background: #0f7fc1;
+    color: #fff;
+}
+.ac_results {
+        padding: 0px;
+        border: 1px solid #ccc;
+        background-color: white;
+        overflow: hidden;
+        z-index: 99999;
+}
+
+.ac_results ul {
+        width: 100%;
+        list-style-position: outside;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+}
+
+.ac_results li {
+        margin: 0px;
+        padding: 0px 5px;
+        cursor: pointer;
+        display: block;
+        /* 
+        if width will be 100% horizontal scrollbar will apear 
+        when scroll mode will be used
+        */
+        /*width: 100%;*/
+        font: menu;
+        font-size: 14px;
+        /* 
+        it is very important, if line-height not setted or setted 
+        in relative units scroll will be broken in firefox
+        */
+        line-height: 1.8em;
+        overflow: hidden;
+}
+.ac_input{
+        font-size: 13px;
+}
+.ac_results {
+     top: 38px;
+    left: 570px;
+    padding-top: 6px;
+    background: #fff;
+}
+.concat-keyword {
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 5px;
+}
+.parent-keyword {
+    color: #004B91;
+    margin-left: 5px;
+    font-family: open_sans_bold, Arial, Tahoma;
+    font-weight: 400 !important; 
+}
+/*
+.ac_odd {
+        background-color: #eee;
+}
+
+.ac_over {
+        background-color: #0A246A;
+        color: white;
+}
+*/
