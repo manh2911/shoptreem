@@ -11,7 +11,7 @@
             <div class="menu_subcate">
                 <?php $color = \App\Helper\ServiceAction::COLOR_CATEGORIES[$key]; ?>
                 <div class="box_title_cate" style="background-color: {{ $color }}">
-                    <a href="https://shoptretho.com.vn/danh-muc/cho-be-an">
+                    <a href="{{ route('category', $parent_category->id) }}">
                         <img src="{{ $parent_category->imageIcon }}?mode=max&amp;width=60&amp;height=60" alt="{{ $parent_category->name }}">
                         <h2>{{ $parent_category->name }}</h2>
                     </a>
@@ -24,9 +24,9 @@
                         ?>
                         @foreach($categories as $category)
                             <?php $array_categories_id[] = $category->id; ?>
-                        <li><a href="https://shoptretho.com.vn/danh-muc/banh-an-dam">{{ $category->name }}</a></li>
+                        <li><a href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                         @endforeach
-                        <li><a href="https://shoptretho.com.vn/danh-muc/cho-be-an" class="seeall">Xem tất cả <i class="fa fa-angle-double-right"></i></a></li>
+                        <li><a href="{{ route('category', $parent_category->id) }}" class="seeall">Xem tất cả <i class="fa fa-angle-double-right"></i></a></li>
                     </ul>
                 </div>
                 <style>

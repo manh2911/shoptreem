@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('Client/vendor/carousel/owl.carousel.min.css') }}">
     <link href="{{ asset('Client/js/AutoComplete/jquery.autocomplete.css') }}" rel="stylesheet" />
     <link href="{{ asset('Client/css/pc/mainab05.css') }}?v=qUoMgh-RAx0Q30rO_7UKK-5rnIpFDSHfflhgF70pc4s1" rel="stylesheet"/>
+    <link href="{{ asset('Client/css/pc/product-detaile195.css') }}?v=bbqDyjavMcoz2OkSxkkwXR7WNlSlq5BRmjDDKdSXdts1" rel="stylesheet"/>
     <link href="{{ asset('Client/vendor/Content/jcarousel/jcarousel.responsive.css') }}" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
