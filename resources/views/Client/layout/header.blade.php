@@ -2,17 +2,7 @@
 
     <div class="top_header width-common" style="background: #1d69a4">
         <div class="wrap">
-            <a href="https://shoptretho.com.vn/Home/BannerClick/PCDBC8C9EBFF2E4" target="_blank" ><img lazyload data-original=https://media.shoptretho.com.vn/upload/image/banner/20200504/dai-tiec-sinh-nhat-shop-tre-tho-lan-thu-11-1.png src=Content/images/icons/none-background.png alt="Đại tiệc sinh nhật"></a>
-        </div>
-    </div>
-
-
-    <div class="width-common" id="banner-bottom-fix" style="background: ; position: fixed; bottom:0px;z-index: 9999999;">
-        <div class="wrap" style="position: relative;">
-            <span onclick="closeBanner(this)" style="width: 20px; height: 20px; font-size: 20px; text-align: center; display: inline-block; position: absolute; right: 0; top: 0; background-color: #333; color: #FFF; cursor: pointer; z-index: 99; line-height: 20px;">×</span>
-            <a href="https://shoptretho.com.vn/Home/BannerClick/PCCDE907702FCF4" target="_blank">
-                <img lazyload data-original=https://media.shoptretho.com.vn/upload/image/banner/20200504/dai-tiec-sinh-nhat-shop-tre-tho-lan-thu-11-2.png src=Content/images/icons/none-background.png alt="Đại tiệc sinh nhật">
-            </a>
+            <a href="#" target="_blank" ><img lazyload data-original=https://media.shoptretho.com.vn/upload/image/banner/20200504/dai-tiec-sinh-nhat-shop-tre-tho-lan-thu-11-1.png src=Content/images/icons/none-background.png alt="Đại tiệc sinh nhật"></a>
         </div>
     </div>
 
