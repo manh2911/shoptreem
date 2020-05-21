@@ -71,5 +71,13 @@
                 {{ $currentCategory->name }}
             </a>
         </li>
+        @if(isset($product))
+            <li class="nav_top main_cate">
+                <a href="{{ route('product',  $product->id) }}">
+                    <i class="fa fa-angle-right"></i>
+                    {{ $product->name }}
+                </a>
+            </li>
+        @endif
     </ul>
 </div>
