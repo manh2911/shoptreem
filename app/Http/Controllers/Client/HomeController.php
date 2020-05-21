@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Brand;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\ImageDetailProduct;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,19 @@ class HomeController extends Controller
         ));
     }
 
-    public function product(){
-        return view('Client.page.product');
+    public function product($id){
+        $product = Product::findOrFail($id);
+        $currentCategory = $product->category;
+        $parent_categories = Category::where('parent_id', '0')->get();
+        $productImages = ImageDetailProduct::where('product_id', $id)->get();
+        $relativeProducts = Product::where('category_id', $product->category_id)->orderBy('id', 'desc')->limit(6)->get();
+
+        return view('Client.page.product', compact(
+                'product',
+                'currentCategory',
+            'parent_categories',
+            'productImages',
+            'relativeProducts'
+            ));
     }
 }

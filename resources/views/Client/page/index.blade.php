@@ -50,13 +50,13 @@
                 <div class="item">
                     <div class="image_item">
                         <?php $imageProduct = \App\ImageDetailProduct::where('product_id', $product->id)->first(); ?>
-                        <a href="https://shoptretho.com.vn/sua-aptamil-anh-so-3-loai-moi" target="_blank">
+                        <a href="{{ route('product', $product->id) }}" target="_blank">
                             <img src="{{ $imageProduct->image }}?mode=max&amp;width=400&amp;height=400" alt="{{ $product->name }}">
 
                         </a>
                     </div>
                     <h3>
-                        <a href="https://shoptretho.com.vn/sua-aptamil-anh-so-3-loai-moi" target="_blank">{{ $product->name }}</a>
+                        <a href="{{ route('product', $product->id) }}" target="_blank">{{ $product->name }}</a>
                     </h3>
                     <div class="price">
                         <?php

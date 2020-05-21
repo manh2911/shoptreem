@@ -31,13 +31,13 @@
                     <div class="product">
                         <div class="product_child">
                             <div class="pro_img">
-                                <a href="https://shoptretho.com.vn/sua-non-goodhealth-acp-20-goi" target="_blank"
+                                <a href="{{ route('product', $product->id) }}" target="_blank"
                                    title="{{ $product->name }}"><img
                                         src="{{ $firstImage->image }}"
                                         alt="{{ $product->name }}"></a>
                             </div>
                             <h3 class="name_pro">
-                                <a href="https://shoptretho.com.vn/sua-non-goodhealth-acp-20-goi" target="_blank"
+                                <a href="{{ route('product', $product->id) }}" target="_blank"
                                    title="{{ $product->name }}">
                                     {{ $product->name }}
                                 </a>
