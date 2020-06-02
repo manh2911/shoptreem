@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
+use App\Mail\MailNotify;
+use App\Mail\ResetPassword;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -42,12 +46,16 @@ class LoginController extends Controller
 //        $this->middleware('guest')->except('logout');
     }
 
-    public function getLogin()
+    public function getLoginAdmin()
     {
-        return view('Admin.pages.login');
+        if (Auth::check()) {
+            return redirect()->route('admin.index');
+        } else {
+            return view('Admin.pages.login');
+        }
     }
 
-    public function postLogin(AdminLoginRequest $request)
+    public function postLoginAdmin(AdminLoginRequest $request)
     {
         $login = array(
             'email' => $request->email,
@@ -64,9 +72,42 @@ class LoginController extends Controller
         return redirect()->back()->withInput()->withErrors('Email or Password wrong');
     }
 
+    public function logoutAdmin(Request $request)
+    {
+        Auth::logout();
+        return Redirect::to('admin/login');
+    }
+
+    public function getLogin()
+    {
+        return view('Client.auth.login');
+    }
+
+    public function postLogin(Request $request)
+    {
+        $login = array(
+            'email' => $request->email,
+            'password' => $request->password
+        );
+
+        if (Auth::attempt($login)) {
+            return redirect()->route('index');
+        }
+        return redirect()->back()->withInput()->withErrors('Email or Password wrong');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('admin.getLogin');
+        return redirect()->route('index');
+    }
+
+    public function getForgotPassword() {
+        return view('Client.auth.forgot_password');
+    }
+
+    public function postForgotPassword(Request $request) {
+        $email = $request->email;
+        Mail::to($email)->send(new ResetPassword());
     }
 }

@@ -60,10 +60,10 @@
             <div class="box_slider">
                 <div class="slider owl-carousel" id="slider">
                     <div class="slide-item">
-                        <a href="#"><img src="https://media.shoptretho.com.vn/upload/image/banner/20200429/768x399-1.png" alt="Sinh nhật 11 tuổi"></a>
+                        <a href="#"><img src="../upload/image_slide/768x399-1.png" alt=""></a>
                     </div>
                     <div class="slide-item">
-                        <a href="#"><img src="https://media.shoptretho.com.vn/upload/image/banner/20200429/khuyen-mai-don-hang-abbott-2-1.png" alt="Qu&#224; tặng Abbott"></a>
+                        <a href="#"><img src="../upload/image_slide/khuyen-mai-don-hang-abbott-2-1.png" alt="Qu&#224; tặng Abbott"></a>
                     </div>
                 </div>
             </div>

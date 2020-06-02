@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', 'Admin\HomeController@index')->name('index');
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'Auth\LoginController@logoutAdmin')->name('logout');
 
 //user
 Route::resource('user', 'Admin\UserController')->only([
