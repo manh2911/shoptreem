@@ -2,7 +2,7 @@
 
     <div class="top_header width-common" style="background: #1d69a4">
         <div class="wrap">
-            <a href="#" target="_blank" ><img lazyload data-original=https://media.shoptretho.com.vn/upload/image/banner/20200504/dai-tiec-sinh-nhat-shop-tre-tho-lan-thu-11-1.png src=Content/images/icons/none-background.png alt="Đại tiệc sinh nhật"></a>
+            <a href="#" target="_blank" ><img src="../upload/image_slide/dai-tiec-sinh-nhat-shop-tre-tho-lan-thu-11-1.png" alt="Đại tiệc sinh nhật"></a>
         </div>
     </div>
 
@@ -32,24 +32,24 @@
                     </form>
                 </div>
                 <div class="box_right_header right">
+                    <div class="box_user">
+                        <div>
+                            <i class="fa fa-user"></i>
+                            @if(\Illuminate\Support\Facades\Auth::check())
+                                <a href="" style="color: #6b6b6b">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>|
+                                <a href="{{ route('logout') }}" style="color: #6b6b6b">Đăng xuất</a>
+                            @else
+                                <a href="{{ route('getLogin') }}" style="color: #6b6b6b">Đăng nhập</a>|
+                                <a href="{{ route('getRegister') }}" style="color: #6b6b6b">Đăng kí</a>
+                            @endif
+                        </div>
+                    </div>
                     <div class="box_cart">
                         <a href="https://shoptretho.com.vn/thanh-toan">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="cart_qty">0</span>
                             <p>Giỏ hàng</p>
                         </a>
-                    </div>
-                    <div class="box_like">
-                        <a href="https://shoptretho.com.vn/san-pham-ua-thich">
-                            <i class="fa fa-heart-o"></i>
-                            <p>Yêu thích</p>
-                        </a>
-                    </div>
-                    <div class="box_user">
-                        <div>
-                            <i class="fa fa-user"></i>
-                            <a href="https://shoptretho.com.vn/dang-nhap" style="color: #6b6b6b">Đăng nhập</a>|<a href="https://shoptretho.com.vn/dang-ky">Đăng kí</a>
-                        </div>
                     </div>
                 </div>
                 <div class="clear"></div>

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helper\ServiceAction;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+//        $this->middleware('guest');
     }
 
     /**
@@ -69,5 +72,41 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function getRegister() {
+        return view('Client.auth.register');
+    }
+
+    public function postRegister(Request $request) {
+        $validation = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|same:re_password',
+            're_password' => 'required',
+        ]);
+        if($validation->passes()) {
+
+            $user = new \App\User();
+            $user->role = User::ROLE_CLIENT;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->image = '';
+            $user->save();
+
+            $login = array(
+                'email' => $request->email,
+                'password' => $request->password
+            );
+
+            if (Auth::attempt($login)) {
+                return redirect()->route('index');
+            }
+
+        } else {
+            return redirect()->back()->withInput($request->input())->withErrors($validation->errors());
+        }
+
     }
 }
