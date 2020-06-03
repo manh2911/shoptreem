@@ -6,7 +6,8 @@
 <body>
 
 <h1>Shop trẻ em</h1>
-<p>Thank you</p>
+<p>Link reset password</p>
+<a href="{{ $url }}">Link</a>
 
 </body>
 </html>

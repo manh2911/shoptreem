@@ -25,8 +25,9 @@
                                 </div>
                                 @if($errors->any())
                                     <?php $error = $errors->first(); ?>
-                                    <p style="color: red; font-size: 12px">{{ $error }}</p>
+                                    <p style="color: red; font-size: 12px; margin-bottom: 15px; margin-top: -10px">{{ $error }}</p>
                                 @endif
+
                                 <button type="submit" >Gửi</button>
                             </form>
                             <div class="clear"></div>
