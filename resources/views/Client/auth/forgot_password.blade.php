@@ -23,6 +23,12 @@
                                     <i class="fa fa-envelope"></i>
                                     <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                                 </div>
+                                <?php
+                                    $status = Session::get('status');
+                                ?>
+                                @if(isset($status))
+                                    <p style="color: blue; font-size: 12px; margin-bottom: 15px; margin-top: -10px">{{ $status }}</p>
+                                @endif
                                 @if($errors->any())
                                     <?php $error = $errors->first(); ?>
                                     <p style="color: red; font-size: 12px; margin-bottom: 15px; margin-top: -10px">{{ $error }}</p>

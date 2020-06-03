@@ -22,7 +22,7 @@ class ResetPassword extends Mailable
     public function __construct($email, $token)
     {
         $this->email = $email;
-        $this->url = 'http://127.0.0.1:8000/' . 'password/reset/' . $token . '?email=' . urlencode($this->email);
+        $this->url = 'http://shoptreem.local/' . 'password/reset/' . $token . '?email=' . urlencode($this->email);
     }
 
     /**

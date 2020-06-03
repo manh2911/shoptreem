@@ -1,0 +1,871 @@
+
+.d-overlay {
+    /*background: url(/Areas/Desktop/Content/Images/bg-opacity.png) repeat;*/
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: none;
+    -ms-opacity: 0.7;
+    opacity: 0.7;
+}
+
+.d-overlay-dock-menu {
+    /*background: url(/Areas/Desktop/Content/Images/bg-opacity.png) repeat;*/
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: none;
+    -ms-opacity: 0.35;
+    opacity: 0.35;
+}
+
+.wrap-order {
+    width: 980px;
+    margin: 0 auto;
+    color: #222;
+}
+
+#header-order {
+    float: left;
+    width: 980px;
+}
+
+
+.order-header-icon {
+    float: right;
+    position: relative;
+    color: #1787c6;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 19px 0 0 0;
+}
+
+.order-header-icon i {
+    background: url(https://shoptretho.com.vn/Content/images/images-order.png) no-repeat;
+    height: 52px;
+    width: 52px;
+    float: left;
+    background-repeat: no-repeat;
+    margin-left: 22px;
+    height: 52px;
+    float: left;
+}
+
+.order-header-icon div {
+    height: 52px;
+    float: left;
+}
+
+.order-header-icon span {
+    margin: 20px 0 0 5px;
+    float: left;
+}
+
+.order-header-icon .giao-hang i {
+    background-position: -140px -141px;
+}
+
+.order-header-icon .doi-tra i {
+    background-position: -194px -141px;
+}
+
+.order-header-icon .chinh-hang i {
+    background-position: -247px -141px;
+}
+
+.logo-order {
+    float: left;
+    width: 228px;
+    margin-top: 20px;
+}
+
+.main-order {
+    float: left;
+    border: 1px solid #ececec;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.left-order {
+    float: left;
+    width: 650px;
+    border-right: 1px solid #ececec;
+    padding-bottom: 20px;
+}
+
+.right-order {
+    position: relative;
+    width: 326px;
+    float: left;
+    border-left: 1px solid #ececec;
+    left: -1px;
+    padding-bottom: 20px;
+}
+
+.footer-order {
+    float: left;
+    width: 980px;
+    height: 60px;
+    font-size: 13px;
+}
+
+.line-bottom {
+    width: 100%;
+    float: left;
+}
+
+.bottom-dh {
+    margin: 10px auto;
+    width: 980px;
+}
+
+.left-ttdh {
+    float: left;
+    color: #666666;
+    margin-top: 10px;
+}
+.left-ttdh .hotline {
+    font-weight: bold;
+    margin-left: 5px;
+    color: #000;
+}
+
+.right-ttdh {
+    float: right;
+}
+
+.mar-topdh {
+    margin-top: 10px;
+    font-family:   Arial, Tahoma;
+}
+
+.mar-topdh a {
+    color: #1155cc;
+    cursor: pointer;
+}
+
+.mar-topdh span {
+    margin-left: 3px;
+    color: #666666;
+}
+
+#popup-home {
+    width: 510px;
+    height: 120px;
+    background: #fff;
+    text-align: center;
+    z-index: 9999999;
+    border: 1px solid #aaa;
+    display: none;
+}
+
+.text-popup {
+    font-size: 15px;
+    line-height: 70px;
+}
+
+.return-home {
+    width: 128px;
+    height: 30px;
+    background: #e6e6e6;
+    color: #222;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    float: left;
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.return-home:hover {
+    background: #f9f9f9;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.link-cart {
+    position: absolute;
+    left: 102px;
+    width: 128px;
+    height: 31px;
+    background: #bababa;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.link-tttt {
+    width: 164px;
+    height: 31px;
+    background: #b64d07;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    position: absolute;
+    left: 260px;
+}
+
+.order-cont {
+    width: 164px;
+    height: 30px;
+    background: #fc5300;
+    color: #fff;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    float: left;
+    line-height: 30px;
+    font-size: 14px;
+    /*font-weight: bold;*/
+    font-family:  Arial, Tahoma;
+    font-weight: bold !important;
+}
+
+.order-cont:hover {
+    color: #fff;
+    background: #ff6723;
+}
+
+.thong-tin, .thanh-toan, .box-cart-info {
+    float: left;
+    margin: 0 23px 0 23px;
+    width: 278px;
+}
+.tieu-de {
+    text-transform: uppercase;
+    border-left: 5px solid #cccccc;
+    background-color: #f5f5f5;
+    line-height: 32px;
+    width: 100%;
+    float: left;
+    padding-left: 9px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.tieu-de .so-luong {
+    text-transform: none;
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+.loading-icon {
+    background: url("/Content/images/icons/loading.gif") center center no-repeat;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.line-order {
+    width: 100%;
+    float: left;
+    margin: 6px 0 0 0;
+    color: #222222;
+    padding: 5px 0 5px 0;
+}
+.line-order span.gt {
+    margin-left: 5px;
+}
+.line-order.gtgt {
+    margin: 5px 0 0 0;
+    display: none;
+}
+.line-order select:focus {
+    border: 1px solid #00adec;
+}
+
+.line-order select {
+    outline: none;
+    -moz-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 34px;
+    padding: 6px 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: transparent;
+}
+.line-order select option {
+    margin-bottom: 5px;
+}
+.list-city, .list-district, .list-bank {
+    position: relative;
+    width: 49%;
+    float: left;
+}
+.list-district {
+    float: right;
+}
+.list-bank, .list-address{
+    width: 100%;
+    position: relative;
+}
+.select-icon {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    font-size: 20px;
+    z-index: -1;
+    color: #555;
+}
+
+.line-order .ds-dia-chi-giao,
+.line-order .ds-ngan-hang  {
+    width: 100%;
+}
+
+.line-order label {
+    font-weight: normal;
+    margin-top: 2px;
+}
+.text-box {
+    width: 100%;
+    height: 34px;
+    padding: 6px 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.text-box:hover, .text-box:focus {
+    border: 1px solid #00adec;
+}
+
+.text-box.note {
+    height: 68px;
+}
+.div-radio-button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.gender .div-radio-button {
+    margin-left: 10px;
+}
+.div-radio-button input,
+.div-radio-button label,
+.div-radio-button i {
+    cursor: pointer;
+    color: #000;
+}
+.div-radio-button input {
+    -ms-opacity: 0;
+    opacity: 0;
+    margin: 0 5px 0 5px;
+}
+
+.div-radio-button i {
+    width: 23px;
+    height: 23px;
+    display: block;
+    position: absolute;
+    top: 0;
+    font-size: 25px;
+    color: #d8d8d8;
+}
+.fa-dot-circle-o, .fa-check-square,
+.div-radio-button:hover .fa-circle-thin,
+.div-radio-button:hover .fa-square-o{
+    color: #27c1f2!important;
+}
+.thanh-toan .div-radio-button {
+    margin-left: 10px;
+}
+.fa-dot-circle-thin {
+    background: url(https://shoptretho.com.vn/Content/images/images-order.png) no-repeat;
+    background-position: -116px -141px;
+}
+
+.box-xuathoadon {
+    float: left;
+    display: none;
+}
+
+.btnHoanTatCart, .btnLogin {
+    width: 284px;
+    height: 37px;
+    background: #f76617;
+    color: #fff;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    line-height: 35px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    margin: auto;
+    text-transform: uppercase;
+}
+
+.btnHoanTatCart:hover, .btnLogin:hover {
+    background: #ff6723;
+}
+
+.box-btnHoanTat {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.content-cart-infor {
+    margin: 5px auto;
+    float: left;
+    overflow: hidden;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+    max-height: 200px;
+    margin-right: -15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ps-container>.ps-scrollbar-y-rail {
+    -ms-opacity: 0.6!important;
+    opacity: 0.6!important;
+}
+.item-cart {
+    float: left;
+    border-top: 1px dashed #a0a0a0;
+    margin: 5px 0 5px 0;
+    padding: 5px 0 5px 0;
+}
+.item-cart:first-child {
+    border-top: none;
+}
+.cart-img {
+    width: 42px;
+    float: left;
+    margin-right: 6px;
+}
+.cart-img img{
+    border: 1px solid #f6f6f6;
+    margin-top: 3px;
+    width: 40px;
+}
+.cart-name {
+    width: 230px;
+    float: left;
+}
+
+.cart-name .name {
+    float: left;
+    max-width: 140px;
+}
+.cart-name .price {
+    -moz-min-width: 75px;
+    -ms-min-width: 75px;
+    -o-min-width: 75px;
+    -webkit-min-width: 75px;
+    min-width: 75px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.cart-name i, .line-order i {
+    font-style: normal;
+}
+.cart-name .price-box {
+    text-align: right;
+}
+.price-box .km {
+    display: none;
+}
+.old{
+    color: #888888;
+    text-decoration: line-through;
+}
+.cart-sl
+{
+    margin-top: 10px;
+    float: left;
+    width: 230px;
+    color: #a0a0a0;
+}
+.cart-sl i {
+    float: left;
+    margin-right: 5px;
+    font-style: normal;
+}
+.cart-sl span {
+    font-size: 13px;
+    margin-top: 5px;
+    float: left;
+    margin-right: 5px;
+}
+.bold {
+    font-weight: bold;
+}
+.cart-sl a {
+    height: 25px;
+    float: left;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.cart-sl a:hover {
+    border: 1px solid #03abec;
+}
+
+.cart-sl .quan {
+    -moz-min-width: 28px;
+    -ms-min-width: 28px;
+    -o-min-width: 28px;
+    -webkit-min-width: 28px;
+    min-width: 28px;
+    text-align: center;
+    color: #a0a0a0;
+    border-left: none;
+    border-right: none;
+    cursor: default;
+}
+.cart-sl .quan:hover {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+}
+.disale-text {
+    color: #ddd!important;
+}
+
+.disale-text:hover {
+    border: 1px solid #ddd!important;
+    cursor: default;
+}
+
+.cart-sl .minus, .cart-sl .plus {
+    width: 29px;
+    font-size: 14px;
+    padding: 5px 8px;
+    color: #000;
+}
+
+.cart-sl .del{
+    float: right;
+    width: 29px;
+    font-size: 18px;
+    padding: 2px 2px;
+    color: #000;
+}
+.div-fav, .cart-price {
+    display: none;
+}
+.apdung-voucher .tit {
+    float: left;
+    width: 100%;
+    text-align: left;
+    display: none;
+}
+.apdung-voucher .voucher_btn {
+    border: 1px solid #0388cd;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    color: #fff;height: 28px;
+    background-color: #0388cd;
+    margin-left: 6px;
+    padding: 5px;
+    height: 33px;
+    float: right;
+}
+
+.apdung-voucher .voucher_btn.disabled,
+.apdung-voucher .voucher_btn.disabled:hover {
+    border: 1px solid #a0a0a0;
+    background-color: #a0a0a0;
+}
+
+.apdung-voucher .voucher_btn:hover {
+    background: #039dcd;
+}
+.apdung-voucher input {
+    width: 200px;
+    float: left;
+}
+.total-text {
+    font-weight: bold;
+}
+.total-money{
+    font-weight: bold;
+    color: #f84b4b;
+    float: right;
+    font-size: 17px;
+}
+.fl-right {
+    float: right;
+}
+.fl-left{
+    float: left;
+}
+.line-order.total {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.dia-chi-giao,
+.pttt {
+    width: 100%;
+    float: left;
+}
+
+.view-address,
+.view-cus-infor,
+.view-bank {
+    margin-left: 10px;
+    margin-top: 0;
+    padding-right: 10px;
+    line-height: 22px;
+}
+
+.view-address .cus-name,
+.view-cus-infor .cus-name,
+.view-bank .cus-name {
+    font-weight: bold;
+}
+
+.view-address span,
+.view-cus-infor span,
+.view-bank span {
+    float: left;
+    width: 100%;
+}
+.radio-line-group {
+    margin-top: 8px;
+    width: 100%;
+}
+.radio-line-group:first-child {
+    margin-top: 0;
+}
+
+.login-form {
+    float: left;
+    width: 658px;
+    background-color: #fff;
+    z-index: 9999;
+    display: none;
+}
+
+.login-order {
+    background-color: #f8f8f8;
+    border: 1px dashed #dedede;
+    float: left;
+    width: 980px;
+    line-height: 43px;
+    margin: 10px 0 0 0;
+    padding-left: 5px;
+    color: #666666;
+    font-size: 14px;
+}
+
+.cart-error a,
+.login-order a{
+    font-weight: bold;
+    margin: 0 5px 0 5px;
+    color: #1155cc;
+    cursor: pointer;
+}
+.login-header {
+    width: 658px;
+    float: left;
+    height: 42px;
+    background-color: #0f7fc1;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+}
+.login-header i {
+    cursor: pointer;
+    -ms-opacity: 0;
+    opacity: 100;
+    float: right;
+    font-size: 25px;
+    padding: 0 2px;
+}
+.login-header i:hover {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+
+.login-main {
+    float: left;
+    width: 658px;
+    margin: 30px 0 30px 0;
+
+}
+.login-left {
+    float: left;
+    border-right: 1px solid #ddd;
+    width: 350px;
+    padding: 0 30px 0 30px;
+}
+
+.login-left .btnLogin {
+    width: 195px;
+    margin: auto;
+    width: 195px;
+}
+.login-left label {
+    margin-left: 0px;
+}
+.login-left a {
+    color: #1155cc;
+}
+.center {
+    text-align: center;
+}
+.login-right {
+    float: left;
+    width: 308px;
+}
+.login-right b{
+    font-size: 19px;
+}
+.login-right i{
+    font-style: italic;
+}
+.login-right b{
+    font-size: 17px;
+}
+.login-right .btnLoginFB {
+    width: 245px;
+    height: 35px;
+    background: #f76617;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    background: url(https://shoptretho.com.vn/Content/images/images-order.png) no-repeat;
+    background-position: -53px -69px;
+    margin: auto;
+}
+.login-right .btnLoginFB:hover {
+    background-position: -53px -105px;
+}
+
+.fb-google {
+    height: 30px;
+    margin: 10px auto;
+    margin-left: 5px;
+}
+
+.fb-google a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+
+.fb-google div {
+    width: 48%;
+    display: inline-block;
+    padding: 2px 0px;
+}
+
+.fb-google .icon {
+    width: 33px;
+    height: 33px;
+    border-right: 2px solid;
+    position: relative;
+    margin-top: -1px;
+}
+
+.fb-google .text {
+    height: 33px;
+    line-height: 33px;
+    margin-top: -1px;
+    padding-left: 10px;
+    color: #fff;
+    text-align: center;
+    float: left;
+}
+
+.google .icon {
+    border-right: 1px solid #e76651;
+}
+
+.google .text {
+    border-left: 1px solid #a13c00;
+}
+
+.facebook .icon {
+    border-right: 1px solid #4a69a0;
+}
+
+.facebook .text {
+    border-left: 1px solid #324e7f;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #d64a38;
+}
+
+.fb-icon {
+    position: absolute;
+    background-position: -0px -296px;
+    width: 11px;
+    height: 21px;
+    top: 50%;
+    margin-top: -10px;
+    left: 50%;
+    margin-left: -6px;
+}
+
+.google-icon {
+    position: absolute;
+    background-position: -18px -297px;
+    width: 15px;
+    height: 21px;
+    top: 50%;
+    margin-top: -10px;
+    left: 50%;
+    margin-left: -8px;
+}
+.left {
+    float: left;
+}
+.background-image {
+    background-image: url(/Content/images/icons/stt-home.png);
+}
+.field-validation-error {
+    color: red!important;
+    font-style: italic;
+}
+
+.input-validation-error {
+    border: 1px solid red!important;
+    padding-left: 6px;
+}
+.cart-error {
+    text-align: center;
+    padding: 10px 0 0;
+    color: #ff0000;
+    font-size: 15px;
+    font-weight: bold;
+}
+.logo-order a img{
+    max-width: 100%;
+}

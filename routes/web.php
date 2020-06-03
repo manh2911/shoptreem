@@ -40,5 +40,5 @@ Route::get('/reset-password', 'Auth\ForgotPasswordController@getResetPassword')-
 Route::get('/reset-password', 'Auth\ForgotPasswordController@postResetPassword')->name('postResetPassword');
 
 Route::group(['middleware' => 'checkUserLogin'], function() {
-
+    Route::get('/order', 'Client\OrderController@index')->name('order');
 });
