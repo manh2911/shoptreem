@@ -498,11 +498,11 @@
 .fa.fa-mobile-phone:before {
   content: "\f3cd"; }
 
-.fa.fa-circle-o {
+.fa.fa-circle {
   font-family: 'Font Awesome 5 Free';
   font-weight: 400; }
 
-.fa.fa-circle-o:before {
+.fa.fa-circle:before {
   content: "\f111"; }
 
 .fa.fa-mail-reply:before {
@@ -1215,7 +1215,7 @@
 .fa.fa-support:before {
   content: "\f1cd"; }
 
-.fa.fa-circle-o-notch:before {
+.fa.fa-circle-notch:before {
   content: "\f1ce"; }
 
 .fa.fa-rebel {
