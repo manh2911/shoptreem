@@ -33,7 +33,12 @@ Route::post('/login', 'Auth\LoginController@postLogin')->name('postLogin');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/forgot-password', 'Auth\LoginController@getForgotPassword')->name('getForgotPassword');
-Route::group(['middleware' => 'web'], function() {
-    Route::post('/forgot-password', 'Auth\LoginController@postForgotPassword')->name('postForgotPassword');
+Route::get('/forgot-password', 'Auth\ForgotPasswordController@getForgotPassword')->name('getForgotPassword');
+Route::post('/forgot-password', 'Auth\ForgotPasswordController@postForgotPassword')->name('postForgotPassword');
+
+Route::get('/reset-password', 'Auth\ForgotPasswordController@getResetPassword')->name('getResetPassword');
+Route::get('/reset-password', 'Auth\ForgotPasswordController@postResetPassword')->name('postResetPassword');
+
+Route::group(['middleware' => 'checkUserLogin'], function() {
+
 });

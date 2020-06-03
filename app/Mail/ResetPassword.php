@@ -16,9 +16,13 @@ class ResetPassword extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $email;
+    public $url;
+
+    public function __construct($email, $token)
     {
-        //
+        $this->email = $email;
+        $this->url = 'http://127.0.0.1:8000/' . 'password/reset/' . $token . '?email=' . urlencode($this->email);
     }
 
     /**
@@ -28,7 +32,11 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->from('manhmoc291196@gmail.com')
-            ->view('Client.auth.forgot_password');
+        return $this->view('Client.auth.mail_content')
+            ->subject('Shop Trẻ Em')
+            ->with([
+                'email'=> $this->email,
+                'url'=> $this->url
+            ]);
     }
 }

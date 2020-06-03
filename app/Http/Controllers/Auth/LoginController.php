@@ -102,12 +102,4 @@ class LoginController extends Controller
         return redirect()->route('index');
     }
 
-    public function getForgotPassword() {
-        return view('Client.auth.forgot_password');
-    }
-
-    public function postForgotPassword(Request $request) {
-        $email = $request->email;
-        Mail::to($email)->send(new ResetPassword());
-    }
 }
