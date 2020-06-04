@@ -42,3 +42,5 @@ Route::get('/reset-password', 'Auth\ForgotPasswordController@postResetPassword')
 Route::group(['middleware' => 'checkUserLogin'], function() {
     Route::get('/order', 'Client\OrderController@index')->name('order');
 });
+
+Route::get('/addToCart', 'Client\CartController@addToCart')->name('addToCart');

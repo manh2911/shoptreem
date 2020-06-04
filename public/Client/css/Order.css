@@ -495,8 +495,9 @@
 }
 .cart-sl i {
     float: left;
-    margin-right: 5px;
     font-style: normal;
+    margin-left: 25%;
+    margin-top: 10%;
 }
 .cart-sl span {
     font-size: 13px;
@@ -509,6 +510,7 @@
 }
 .cart-sl a {
     height: 25px;
+    width: 25px;
     float: left;
     border: 1px solid #ddd;
     cursor: pointer;
@@ -546,9 +548,7 @@
 }
 
 .cart-sl .minus, .cart-sl .plus {
-    width: 29px;
     font-size: 14px;
-    padding: 5px 8px;
     color: #000;
 }
 

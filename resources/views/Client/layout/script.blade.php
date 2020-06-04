@@ -18,6 +18,7 @@
 <script src="https://shoptretho.com.vn/js/pc/main.js?v=Jpgcf4d6GHeuVSeyP_wiFzzj4-_jdSb6Kd0SMml8BsY1"></script>
 <script src="https://shoptretho.com.vn/Content/vendor/flexslider/jquery.flexslider.js"></script>
 <script src="https://shoptretho.com.vn/js/pc/product-detail.js?v=5wvlG3s9-WZV5ip-aweTDi_9xiJPOyvfzqbRDBGDZ2w1"></script>
+<script src="{{ asset('Client/js/cart.js') }}"></script>
 
 @stack('scripts')
 <!-- Start of widget script -->

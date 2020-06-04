@@ -8,7 +8,7 @@
 
             <div class="header-order">
                 <div class="logo-order">
-                    <a id="logostt" style="display: block; cursor: pointer;" title="Về trang chủ">
+                    <a id="logostt" style="display: block; cursor: pointer;" href="{{ route('index') }}">
                         <img src="https://media.shoptretho.com.vn/upload/logo/logotet2019.png" alt="ShopTreTho.com.vn - Thiên đường cho bé." onclick="ga('send', 'event', 'Điều hướng', 'Quay lại', 'Logo quay về trang chủ', ''); "></a>
                 </div>
                 <div class="order-header-icon">
@@ -106,8 +106,8 @@
                                     <div class="cart-sl">
                                         <div class="div-sl">
                                             <span>Số lượng:</span>
-                                            <a class="minus  disale-text" title="Giảm số lượng mua"
-                                               onclick="AddQuantity(this, 'A4F712BB61C8' , '' , '' , -1, '/Desktop/OrderDesktop/ChangeQuantityToBuy' ); "><i
+                                            <a class="plus" title="Tăng số lượng mua"
+                                               onclick="AddQuantity(this, 'A4F712BB61C8' , '' , '' , 0, '/Desktop/OrderDesktop/ChangeQuantityToBuy' ); "><i
                                                     class="fa fa-minus" aria-hidden="true"></i></a>
                                             <a class="quan" title="Số lượng sản phẩm muốn mua">1</a>
                                             <a class="plus" title="Tăng số lượng mua"
