@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="box_cart">
-                        <a href="https://shoptretho.com.vn/thanh-toan">
+                        <a href="{{ route('order') }}">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="cart_qty">0</span>
                             <p>Giỏ hàng</p>

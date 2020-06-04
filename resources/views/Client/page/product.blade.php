@@ -106,11 +106,8 @@
                         </div>
                     </div>
                     <div class="box_btn">
-                        <button class="btn_order_now" href="javascript:;" data-bynow="1"
-                                data-url="/Product/RedirectShoppingCart" onclick="Order(this);">Mua ngay
-                        </button>
-                        <button class="btn_add_cart" href="javascript:;" data-url="/Product/AddToCart"
-                                onclick="Order(this);">Thêm vào giỏ hàng
+                        <button class="btn_order_now">Mua ngay</button>
+                        <button class="btn_add_cart">Thêm vào giỏ hàng
                         </button>
                         <input id="hidOrderProductId" name="hidOrderProductId" type="hidden" value="PC36CFCBDFB9904">
                         <input id="hidOrderColor" name="hidOrderColor" type="hidden" value="">
@@ -170,13 +167,17 @@
                         </h3>
                         <div class="price">
                             <?php
-                            $price = $product->origin_price - ($product->origin_price * $product->discount / 100);
+                            $price = $relativeProduct->origin_price - ($relativeProduct->origin_price * $relativeProduct->discount / 100);
                             $price_show =  round($price/1000)* 1000;
                             ?>
                             <span class="price_item">{{ $price_show }}đ</span>
-                            <span class="old_price">{{ $product->origin_price }}đ</span>
+                            @if($relativeProduct->discount != 0)
+                                <span class="old_price">{{ $relativeProduct->origin_price }}đ</span>
+                            @endif
                         </div>
-                        <span class="discount">-{{ ($product->origin_price - $price_show) / 1000 }}k</span>
+                        @if($relativeProduct->discount != 0)
+                        <span class="discount">-{{ ($relativeProduct->origin_price - $price_show) / 1000 }}k</span>
+                        @endif
                     </div>
                 @endforeach
                 <div class="clear"></div>

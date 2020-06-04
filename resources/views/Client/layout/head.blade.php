@@ -15,10 +15,8 @@
     <link href="{{ asset('Client/css/pc/product-detaile195.css') }}?v=bbqDyjavMcoz2OkSxkkwXR7WNlSlq5BRmjDDKdSXdts1" rel="stylesheet"/>
     <link href="{{ asset('Client/vendor/Content/jcarousel/jcarousel.responsive.css') }}" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" />
     <link href="{{ asset('Client/css/perfect-scrollbar.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('Client/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('Client/css/Order.css') }}" rel="stylesheet">
 
 </head>
