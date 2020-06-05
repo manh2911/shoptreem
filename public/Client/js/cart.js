@@ -4,6 +4,19 @@ $(document).ready(function(){
 
 function addToCart() {
     $('.btn_add_cart').click(function () {
-        console.log(this)
+        let productId = $(this).data("id");
+        $.ajax({
+            type: 'POST',
+            url: '/add-to-cart',
+            dataType: 'json',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                "productId" : productId,
+            },
+            success: function(res) {
+
+
+            }
+        });
     })
 }

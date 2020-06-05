@@ -21,6 +21,23 @@ class ServiceAction
     const SORT_PRICE_DESC = 3;
     const SORT_NAME_ASC = 4;
     const SORT_NAME_DESC = 5;
-    const SORT_DISCOUNT = 6;
+
+    public static function showPrice($origin_price, $discount) {
+        $priceShow = ServiceAction::calculatorPrice($origin_price, $discount);
+
+        return number_format($priceShow);
+    }
+
+    public static function showDiscount($origin_price, $discount) {
+        $discountShow = ($origin_price - ServiceAction::calculatorPrice($origin_price, $discount)) /1000;
+
+        return number_format($discountShow);
+    }
+
+    public static function calculatorPrice($origin_price, $discount) {
+        $price = $origin_price - ($origin_price * $discount / 100);
+
+        return round($price/1000)* 1000;
+    }
 
 }

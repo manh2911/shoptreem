@@ -59,13 +59,9 @@
                         <a href="{{ route('product', $product->id) }}" target="_blank">{{ $product->name }}</a>
                     </h3>
                     <div class="price">
-                        <?php
-                            $price = $product->origin_price - ($product->origin_price * $product->discount / 100);
-                            $price_show =  round($price/1000)* 1000;
-                        ?>
-                        <span class="price_item">{{ $price_show }}đ</span>
+                        <span class="price_item">{{ \App\Helper\ServiceAction::showPrice($product->origin_price, $product->discount) }}đ</span>
                         @if( $product->discount != 0 )
-                        <span class="old_price">{{ $product->origin_price }}đ</span>
+                        <span class="old_price">{{ number_format($product->origin_price) }}đ</span>
                         @endif
                     </div>
                     @if( $product->discount != 0 )

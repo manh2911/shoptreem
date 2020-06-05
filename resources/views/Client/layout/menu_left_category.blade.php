@@ -16,9 +16,7 @@
             <ul>
                 @foreach($brands as $brand)
                 <li class="">
-                    <a href="javascript:;" rel="nofollow"
-                       onclick="javascript:loadPageFull('/Desktop/CategoryDesktop/ProductList?permalink=cho-be-an&amp;provider=abbott&amp;page=1&amp;categoryId=30&amp;PageKey=Cate');">
-                        <input type="checkbox"> {{ $brand->name }}</a>
+                    <a><input class="sortBrand" data-id="{{ $brand->id }}" type="checkbox"> {{ $brand->name }}</a>
                 </li>
                 @endforeach
             </ul>
@@ -31,17 +29,14 @@
     <div class="cate_left_price">
         <p class="p_title_filter">Giá</p>
         <div class="option_price">
-            <div id="slider-range" data-min="0" data-max="6500000" data-step="100000" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                <div id="slider_range_from" class="left"></div>
-                <div id="slider_range_to" class="right"></div>
-                <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
             <div class="width_common" id="amount">
-                <div id="price_from" class="left">0</div>
+                <input id="price_from" class="left" value="0" type="number"></input>
                 <span> - </span>
-                <div id="price_to" class="right">6.500.000</div>
+                <input id="price_to" class="right" value="1000000" type="number"></input>
             </div>
-            <input type="hidden" name="price" id="priceFilter" value="0-6500000">
-            <button type="submit" class="submit_range" onclick="javascript:PriceFilter(this, '/Desktop/CategoryDesktop/ProductList?permalink=cho-be-an&amp;page=1&amp;categoryId=30&amp;PageKey=Cate');return false;"><i class="fa fa-caret-right"></i></button>
+            <button type="submit" class="submit_range">
+                <i class="fa fa-caret-right"></i>
+            </button>
         </div>
     </div>
 
