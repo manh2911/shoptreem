@@ -74,16 +74,12 @@
                     </div>
                     <div class="pro_info">
                         <div id="divPrice" class="box_info box_price">
-                            <?php
-                            $price = $product->origin_price - ($product->origin_price * $product->discount / 100);
-                            $price_show =  round($price/1000)* 1000;
-                            ?>
                             <span class="box_info_txt left">Giá:</span>
                             <span class="pro_price left">
-                                <span class="price_show price_item">{{ $price_show }}đ</span>
+                                <span class="price_show price_item">{{ \App\Helper\ServiceAction::showPrice($product->origin_price, $product->discount) }}đ</span>
                                 @if($product->discount != 0)
-                                <span class="old_price">{{ $product->origin_price }}đ</span>
-                                <span class="label_km">Tiết kiệm <span id="discount">{{ ($product->origin_price - $price_show) / 1000 }}k</span></span><br>
+                                <span class="old_price">{{ number_format($product->origin_price) }}đ</span>
+                                <span class="label_km">Tiết kiệm <span id="discount">{{ \App\Helper\ServiceAction::showDiscount($product->origin_price, $product->discount) }}k</span></span><br>
                                 @endif
                             </span>
                             <div class="clear"></div>
@@ -107,8 +103,7 @@
                     </div>
                     <div class="box_btn">
                         <button class="btn_order_now">Mua ngay</button>
-                        <button class="btn_add_cart">Thêm vào giỏ hàng
-                        </button>
+                        <button data-id="{{ $product->id }}" class="btn_add_cart">Thêm vào giỏ hàng</button>
                         <input id="hidOrderProductId" name="hidOrderProductId" type="hidden" value="PC36CFCBDFB9904">
                         <input id="hidOrderColor" name="hidOrderColor" type="hidden" value="">
                         <div class="clear"></div>
@@ -166,17 +161,13 @@
                             <a href="{{ route('product', $relativeProduct->id) }}">{{ $relativeProduct->name }}</a>
                         </h3>
                         <div class="price">
-                            <?php
-                            $price = $relativeProduct->origin_price - ($relativeProduct->origin_price * $relativeProduct->discount / 100);
-                            $price_show =  round($price/1000)* 1000;
-                            ?>
-                            <span class="price_item">{{ $price_show }}đ</span>
+                            <span class="price_item">{{ \App\Helper\ServiceAction::showPrice($relativeProduct->origin_price, $relativeProduct->discount) }}đ</span>
                             @if($relativeProduct->discount != 0)
-                                <span class="old_price">{{ $relativeProduct->origin_price }}đ</span>
+                                <span class="old_price">{{ number_format($relativeProduct->origin_price) }}đ</span>
                             @endif
                         </div>
                         @if($relativeProduct->discount != 0)
-                        <span class="discount">-{{ ($relativeProduct->origin_price - $price_show) / 1000 }}k</span>
+                        <span class="discount">-{{ \App\Helper\ServiceAction::showDiscount($relativeProduct->origin_price, $relativeProduct->discount) }}k</span>
                         @endif
                     </div>
                 @endforeach
@@ -196,10 +187,5 @@
 @push('scripts')
     <script>
 
-        $(document).ready(function(){
-            $('.btn_add_cart').click(function () {
-                console.log(1)
-            })
-        });
     </script>
 @endpush

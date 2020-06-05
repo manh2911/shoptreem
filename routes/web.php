@@ -43,4 +43,5 @@ Route::group(['middleware' => 'checkUserLogin'], function() {
     Route::get('/order', 'Client\OrderController@index')->name('order');
 });
 
-Route::get('/addToCart', 'Client\CartController@addToCart')->name('addToCart');
+Route::post('/add-to-cart', 'Client\CartController@addToCart')->name('add-to-cart');
+Route::post('/sort', 'Client\HomeController@sort')->name('sort');
