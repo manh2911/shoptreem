@@ -1,4 +1,5 @@
 <div class="cate_left" id="product_filter">
+    @if(!isset($keyword))
     <div class="cate_left_title">
         Danh mục liên quan
     </div>
@@ -10,6 +11,7 @@
         <li><a href="{{ route('category', $relateCategory->id) }}">{{ $relateCategory->name }}</a></li>
         @endforeach
     </ul>
+    @endif
     <div class="cate_left_brand">
         <p class="p_title_filter" style="font-size: 16px; padding-bottom: 10px;">Thương hiệu</p>
         <nav class="list-brand">
@@ -26,6 +28,7 @@
             .list-brand ul{overflow:hidden; overflow-y:scroll;}
         </style>
     </div>
+
     <div class="cate_left_price">
         <p class="p_title_filter">Giá</p>
         <div class="option_price">

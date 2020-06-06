@@ -39,6 +39,8 @@ Route::post('/forgot-password', 'Auth\ForgotPasswordController@postForgotPasswor
 Route::get('/reset-password', 'Auth\ForgotPasswordController@getResetPassword')->name('getResetPassword');
 Route::get('/reset-password', 'Auth\ForgotPasswordController@postResetPassword')->name('postResetPassword');
 
+Route::post('/search', 'Client\HomeController@search')->name('search');
+
 Route::group(['middleware' => 'checkUserLogin'], function() {
     Route::get('/order', 'Client\OrderController@index')->name('order');
 });

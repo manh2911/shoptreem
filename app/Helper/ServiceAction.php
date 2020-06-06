@@ -40,4 +40,29 @@ class ServiceAction
         return round($price/1000)* 1000;
     }
 
+    public static function getProductBySort($products, $countPage, $currentPage, $nextPage) {
+        switch ($nextPage) {
+            case 'previous':
+                $page = $currentPage != 1 ? $currentPage - 1 : 1;
+                break;
+            case 'next':
+                $page = $currentPage != $countPage ? $currentPage + 1 : $countPage;
+                break;
+            default:
+                $page = $nextPage;
+        }
+
+        $listProductInPage = [];
+        foreach ($products as $key => $product) {
+            if ($key >=  ($page * 12 - 12) && $key <= $page * 12 - 1) {
+                $listProductInPage[] = $product;
+            }
+        }
+
+        return $data = [
+            'listProductInPage' => $listProductInPage,
+            'page' => $page
+        ];
+    }
+
 }

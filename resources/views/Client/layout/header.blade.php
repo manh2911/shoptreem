@@ -26,8 +26,12 @@
                     <a href="{{ route('index') }}"><img src="../upload/logo.png" alt="Shoptretho.com.vn - Thi&#234;n đường cho B&#233;"></a>
                 </div>
                 <div class="box_search left">
-                    <form action="https://shoptretho.com.vn/Desktop/SearchDesktop/SearchTemp" id="fromSearch" method="post">                            <input type="text" data-url="/Product/SuggestProduct" name="keyword" placeholder="Bố mẹ tìm gì cho bé hôm nay ?" id="search_suggest" >
-                        <button class="" type="submit" id="btnSearch"><i class="fa fa-search"></i></button>
+                    <form action="{{ route('search') }}" id="fromSearch" method="post">
+                        @csrf
+                        <input type="text" name="keyword" placeholder="Bố mẹ tìm gì cho bé hôm nay ?" id="search_suggest" >
+                        <button class="" type="submit" id="btnSearch">
+                            <i class="fa fa-search"></i>
+                        </button>
                         <div class="search_suggest"></div>
                     </form>
                 </div>
