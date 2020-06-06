@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\ImageDetailProduct;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -68,22 +67,30 @@ class HomeController extends Controller
         $sortByPrice = isset($request->sortByPrice) ? $request->sortByPrice : null;
         $sortByName = isset($request->sortByName) ? $request->sortByName : null;
         $idCurrentCategory = isset($request->idCurrentCategory) ? $request->idCurrentCategory : null;
+        $currentPage = isset($request->currentPage) ? $request->currentPage : 0;
+        $nextPage = isset($request->nextPage) ? $request->nextPage : 1;
 
-        $currentCategory = Category::findOrFail($idCurrentCategory);
-        $categories = [];
-        if ($currentCategory->parent_id != 0) {
-            $categories[] = $currentCategory->id;
+        $query = DB::table('products')->select('id', 'name', 'origin_price', 'discount');
 
+        if ($idCurrentCategory == 0) {
+            // search
         } else {
-            $listCategories = Category::select('id')->where('parent_id', $idCurrentCategory)->get()->toArray();
-            $categories = array_map(function ($item) {
-                return $item['id'];
-            }, $listCategories);
-        }
+            $currentCategory = Category::findOrFail($idCurrentCategory);
+            $categories = [];
+            if ($currentCategory->parent_id != 0) {
+                $categories[] = $currentCategory->id;
 
-        $query = DB::table('products')
-            ->select('id', 'name', 'origin_price', 'discount')
-            ->whereIn('category_id', $categories);
+            } else {
+                $listCategories = Category::select('id')->where('parent_id', $idCurrentCategory)->get()->toArray();
+                $categories = array_map(function ($item) {
+                    return $item['id'];
+                }, $listCategories);
+            }
+
+            $query = DB::table('products')
+                ->select('id', 'name', 'origin_price', 'discount')
+                ->whereIn('category_id', $categories);
+        }
 
         if (isset($sortByBrand) && count($sortByBrand) > 0) {
             $query->whereIn('brand_id', $sortByBrand);
@@ -116,7 +123,37 @@ class HomeController extends Controller
             }
         }
 
-        $products = $query->get();
-dd($products);
+        $products = $query->get()->toArray();
+        $countPage = ceil(count($products) / 12);
+
+        $data = ServiceAction::getProductBySort($products, $countPage, $currentPage, $nextPage);
+
+        $images = array_map(function ($item){
+            return \App\ImageDetailProduct::select('image')->where('product_id', $item->id)->first();
+        }, $data['listProductInPage']);
+
+        return response()->json([
+            'products' => $data['listProductInPage'],
+            'images' => $images,
+            'countPage' => $countPage,
+            'nextPage' => $data['page']
+        ]);
+    }
+
+    public function search(Request $request) {
+        $keyword = $request->keyword;
+        if (!$keyword) {
+            return redirect()->route('index');
+        }
+        $products = Product::where('name', 'LIKE', "%{$keyword}%")->paginate(12);;
+        $parent_categories = Category::where('parent_id', '0')->get();
+        $brands = Brand::all();
+
+        return view('Client.page.search', compact(
+            'keyword',
+            'products',
+            'brands',
+            'parent_categories'
+        ));
     }
 }

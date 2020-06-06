@@ -54,30 +54,32 @@
         <li class="nav_top">
             <a href="{{ route('index') }}">Trang chủ</a>
         </li>
-        @if($currentCategory->parent_id != 0)
-        <li class="nav_top main_cate">
-            <?php
-                $parentCurrentCategory = \App\Category::findOrFail($currentCategory->parent_id);
-            ?>
-            <a href="{{ route('category',  $parentCurrentCategory->id) }}">
-                <i class="fa fa-angle-right"></i>
-                {{ $parentCurrentCategory->name }}
-            </a>
-        </li>
-        @endif
-        <li class="nav_top main_cate">
-            <a href="{{ route('category',  $currentCategory->id) }}">
-                <i class="fa fa-angle-right"></i>
-                {{ $currentCategory->name }}
-            </a>
-        </li>
-        @if(isset($product))
+        @if(!isset($keyword))
+            @if($currentCategory->parent_id != 0)
             <li class="nav_top main_cate">
-                <a href="{{ route('product',  $product->id) }}">
+                <?php
+                    $parentCurrentCategory = \App\Category::findOrFail($currentCategory->parent_id);
+                ?>
+                <a href="{{ route('category',  $parentCurrentCategory->id) }}">
                     <i class="fa fa-angle-right"></i>
-                    {{ $product->name }}
+                    {{ $parentCurrentCategory->name }}
                 </a>
             </li>
+            @endif
+            <li class="nav_top main_cate">
+                <a href="{{ route('category',  $currentCategory->id) }}">
+                    <i class="fa fa-angle-right"></i>
+                    {{ $currentCategory->name }}
+                </a>
+            </li>
+            @if(isset($product))
+                <li class="nav_top main_cate">
+                    <a href="{{ route('product',  $product->id) }}">
+                        <i class="fa fa-angle-right"></i>
+                        {{ $product->name }}
+                    </a>
+                </li>
+            @endif
         @endif
     </ul>
 </div>

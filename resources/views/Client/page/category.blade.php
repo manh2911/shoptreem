@@ -6,7 +6,6 @@
         <div class="main_content width-common">
             @include('Client.layout.menu_left_category')
             <div class="cate_right" id="product_cate">
-                <input id="idCurrentCategory" name="idCurrentCategory" type="hidden" value="{{ $currentCategory->id }}">
                 <div class="title_cate_right">
                 <h1 class="title_cate">{{ $currentCategory->name }}</h1>
                     <span class="title_filter">
@@ -23,7 +22,9 @@
                 </div>
                 <div class="clear"></div>
                 <div class="list_item_cate">
-                    @foreach($products as $product)
+                    <input id="idCurrentCategory" name="idCurrentCategory" type="hidden" value="{{ $currentCategory->id }}">
+                    <input id="currentPage" name="currentPage" type="hidden" value="0">
+                @foreach($products as $product)
                         <?php
                             $firstImage = \App\ImageDetailProduct::where('product_id', $product->id)->first();
                         ?>
@@ -56,20 +57,14 @@
                         </div>
                     </div>
                     @endforeach
-
-                    <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
                 <div class="pagination">
                     <ul>
                         {!! $products->links() !!}
                     </ul>
-                    <div class="clear"></div>
-
                 </div>
-
             </div>
-            <div class="clear"></div>
         </div>
     </div>
     <div class="background_black">
