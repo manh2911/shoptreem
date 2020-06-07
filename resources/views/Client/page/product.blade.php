@@ -102,15 +102,14 @@
                         </div>
                     </div>
                     <div class="box_btn">
-                        <button class="btn_order_now">Mua ngay</button>
+                        <button data-id="{{ $product->id }}" class="btn_order_now">Mua ngay</button>
                         <button data-id="{{ $product->id }}" class="btn_add_cart">Thêm vào giỏ hàng</button>
                         <input id="hidOrderProductId" name="hidOrderProductId" type="hidden" value="PC36CFCBDFB9904">
                         <input id="hidOrderColor" name="hidOrderColor" type="hidden" value="">
                         <div class="clear"></div>
                     </div>
                     <div class="box_phone">
-                        Tổng đài mua hàng miễn cước <a href="tel:1800 6066" class="hot_phone">1800 6066</a> (Từ 8h00 đến
-                        21h30 hàng ngày)
+                        Tổng đài mua hàng miễn cước <a href="tel:1800 6066" class="hot_phone">1800 6066</a> (Từ 8h00 đến 21h30 hàng ngày)
                     </div>
                 </div>
                 <div class="clear"></div>
