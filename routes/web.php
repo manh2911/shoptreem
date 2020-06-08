@@ -46,4 +46,7 @@ Route::group(['middleware' => 'checkUserLogin'], function() {
 });
 
 Route::post('/add-to-cart', 'Client\CartController@addToCart')->name('add-to-cart');
+Route::get('/count-products-in-cart', 'Client\CartController@countProductInCart')->name('count-products-in-cart');
+Route::post('/update-quantity-in-cart', 'Client\CartController@updateQuantityInCart')->name('update-quantity-in-cart');
+Route::post('/delete-product-in-cart', 'Client\CartController@deleteProductInCart')->name('delete-product-in-cart');
 Route::post('/sort', 'Client\HomeController@sort')->name('sort');
