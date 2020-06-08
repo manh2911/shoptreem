@@ -174,7 +174,6 @@ function appendNext(countPage, page) {
 function clickPageLink() {
     $( ".page-sort" ).click(function(event) {
         let nextPage = $(this).data('value');
-        console.log(nextPage)
         callFunctionSort(nextPage);
     });
 }

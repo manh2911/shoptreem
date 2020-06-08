@@ -22,6 +22,12 @@ class ServiceAction
     const SORT_NAME_ASC = 4;
     const SORT_NAME_DESC = 5;
 
+    const PLUS = 1;
+    const MINUS = 2;
+
+    const DURING_OFFICE_HOURS = 1;
+    const OUT_OFFICE_HOURS = 2;
+
     public static function showPrice($origin_price, $discount) {
         $priceShow = ServiceAction::calculatorPrice($origin_price, $discount);
 

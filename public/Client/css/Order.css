@@ -647,6 +647,7 @@
 }
 .radio-line-group:first-child {
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .login-form {

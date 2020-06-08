@@ -20,6 +20,8 @@
 <script src="https://shoptretho.com.vn/js/pc/product-detail.js?v=5wvlG3s9-WZV5ip-aweTDi_9xiJPOyvfzqbRDBGDZ2w1"></script>
 <script src="{{ asset('Client/js/cart.js') }}"></script>
 <script src="{{ asset('Client/js/sort-product.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 
 @stack('scripts')
 <!-- Start of widget script -->
