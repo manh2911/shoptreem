@@ -55,6 +55,8 @@ class CartController extends Controller
         $cart->user_id = $userId;
         $cart->content = json_encode($content);
         $cart->total_price = $content[$productId]['subTotalPrice'];
+        $cart->total_discount = $content[$productId]['origin_price'] - $content[$productId]['last_price'];
+        $cart->total_origin_price = $content[$productId]['origin_price'];
         $cart->save();
 
         $this->updateQuantityProduct($productId);
@@ -214,5 +216,10 @@ class CartController extends Controller
             'total_discount' => $cartUpdate->total_discount,
             'total_price' => $cartUpdate->total_price
         ]);
+    }
+
+    public static function deleteCart($userId){
+        $cart = Cart::where('user_id', $userId)->first();
+        $cart->delete();
     }
 }

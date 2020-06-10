@@ -60,10 +60,7 @@
             </div>
             <div class="clear"></div>
         </div>
-        <div class="footer_keyword width-common" style="position: absolute; top: -66px;">
 
-            <a></a>
-        </div>
         <div class="footer_bottom width-common">
 
             <div class="clear"></div>
