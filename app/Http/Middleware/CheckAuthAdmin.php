@@ -21,9 +21,11 @@ class CheckAuthAdmin
             $user = Auth::user();
             if ($user->role == User::ROLE_ADMIN || $user->role == User::ROLE_MANAGEMENT) {
                 return $next($request);
+            } else {
+                return redirect()->route('index');
             }
         } else {
-            return redirect()->back();
+            return redirect()->route('index');
         }
     }
 }

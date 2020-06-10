@@ -41,3 +41,9 @@ Route::group(['prefix'=>'product'], function(){
     Route::get('{id}/active', 'Admin\ProductController@active')->name('product.active');
     Route::get('{id}/inactive', 'Admin\ProductController@inactive')->name('product.inactive');
 });
+
+Route::group(['prefix'=>'order'], function(){
+    Route::get('/', 'Admin\OrderController@index')->name('order.index');
+});
+
+

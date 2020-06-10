@@ -4,6 +4,7 @@ $(document).ready(function(){
     minusProduct();
     plusProduct();
     deleteProduct();
+    orderNow();
 });
 
 function addToCart() {
@@ -114,4 +115,34 @@ function deleteProduct() {
         });
 
     })
+}
+
+function orderNow() {
+    $('.btn_order_now').click(function () {
+        let productId = $(this).data("id");
+        $.ajax({
+            type: 'POST',
+            url: '/add-to-cart',
+            dataType: 'json',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                "productId" : productId,
+            },
+            success: function(res) {
+                if (res.status == true) {
+                    window.location = "/order";
+
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: res.message,
+                        showConfirmButton: true,
+                    })
+                }
+            }
+        });
+
+        countProductsInCart();
+    })
+
 }

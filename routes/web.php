@@ -43,6 +43,7 @@ Route::post('/search', 'Client\HomeController@search')->name('search');
 
 Route::group(['middleware' => 'checkUserLogin'], function() {
     Route::get('/order', 'Client\OrderController@index')->name('order');
+    Route::post('/postOrder', 'Client\OrderController@postOrder')->name('postOrder');
 });
 
 Route::post('/add-to-cart', 'Client\CartController@addToCart')->name('add-to-cart');

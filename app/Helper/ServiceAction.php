@@ -21,12 +21,16 @@ class ServiceAction
     const SORT_PRICE_DESC = 3;
     const SORT_NAME_ASC = 4;
     const SORT_NAME_DESC = 5;
-
+    // plus or minus quantity in cart
     const PLUS = 1;
     const MINUS = 2;
-
+    // delivery time
     const DURING_OFFICE_HOURS = 1;
     const OUT_OFFICE_HOURS = 2;
+    //status order
+    const ORDER_IN_PROCESS = 1;
+    const ORDER_SUCCESS = 2;
+    const ORDER_CANCEL = 3;
 
     public static function showPrice($origin_price, $discount) {
         $priceShow = ServiceAction::calculatorPrice($origin_price, $discount);
@@ -43,7 +47,7 @@ class ServiceAction
     public static function calculatorPrice($origin_price, $discount) {
         $price = $origin_price - ($origin_price * $discount / 100);
 
-        return round($price/1000)* 1000;
+        return $price;
     }
 
     public static function getProductBySort($products, $countPage, $currentPage, $nextPage) {
