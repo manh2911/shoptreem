@@ -23,3 +23,9 @@
     max-width: 200px;
     max-height: 200px;
 }
+.img-order-item {
+    max-width: 80px;
+}
+.show-inline {
+    display: inherit;
+}
