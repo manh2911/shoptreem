@@ -75,4 +75,15 @@ class ServiceAction
         ];
     }
 
+    public static function showStatusOrder($status){
+        switch ($status) {
+            case ServiceAction::ORDER_CANCEL:
+                return 'Cancel';
+            case ServiceAction::ORDER_SUCCESS:
+                return 'Success';
+            default:
+                return 'In Process';
+        }
+    }
+
 }

@@ -22,17 +22,33 @@
                         </thead>
                         <tbody>
                         @foreach($orders as $key => $order)
-                            <tr>
+                            @if($order->status == \App\Helper\ServiceAction::ORDER_CANCEL)
+                            <tr id="order-{{$order->id}}" style="background-color:  lightgray">
+                            @elseif($order->status == \App\Helper\ServiceAction::ORDER_SUCCESS)
+                            <tr id="order-{{$order->id}}" style="background-color: lightgreen">
+                            @else
+                            <tr id="order-{{$order->id}}">
+                            @endif
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->user_id }}</td>
                                 <td>{{ number_format($order->total_price) . ' đ' }}</td>
-                                <td>In Process</td>
+                                <td>{{ \App\Helper\ServiceAction::showStatusOrder($order->status) }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success">Success</button>
-                                    <button type="button" class="btn btn-warning">Cancel</button>
+                                    <button data-id="{{ $order->id }}" type="button" class="btn btn-success status-success"
+                                            id="btn-success-{{$order->id}}"
+                                            onclick="confirmChangeStatus('success')"
+                                            @if($order->status != \App\Helper\ServiceAction::ORDER_IN_PROCESS) disabled @endif>
+                                        Success
+                                    </button>
+                                    <button data-id="{{ $order->id }}" type="button" class="btn btn-warning status-cancel"
+                                            id="btn-cancel-{{$order->id}}"
+                                            onclick="confirmChangeStatus('cancel')"
+                                            @if($order->status != \App\Helper\ServiceAction::ORDER_IN_PROCESS) disabled @endif>
+                                        Cancel
+                                    </button>
                                 </td>
-                                <td><i class="fa fa-arrow-right" aria-hidden="true"></i></td>
+                                <td><button data-id="{{ $order->id }}" class="btn btn-info show-detail">Detail Order {{$order->id}}</button></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -42,4 +58,5 @@
         </div>
 
     </div>
+    @include('Admin.managerOrder.order_item')
 @endsection

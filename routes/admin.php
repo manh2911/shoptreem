@@ -44,6 +44,7 @@ Route::group(['prefix'=>'product'], function(){
 
 Route::group(['prefix'=>'order'], function(){
     Route::get('/', 'Admin\OrderController@index')->name('order.index');
+    Route::post('/change-status', 'Admin\OrderController@changeStatus')->name('order.changeStatus');
 });
 
 
