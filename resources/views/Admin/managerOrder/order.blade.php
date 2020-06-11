@@ -33,17 +33,15 @@
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->user_id }}</td>
                                 <td>{{ number_format($order->total_price) . ' đ' }}</td>
-                                <td>{{ \App\Helper\ServiceAction::showStatusOrder($order->status) }}</td>
+                                <td id="status-{{$order->id}}">{{ \App\Helper\ServiceAction::showStatusOrder($order->status) }}</td>
                                 <td>
                                     <button data-id="{{ $order->id }}" type="button" class="btn btn-success status-success"
                                             id="btn-success-{{$order->id}}"
-                                            onclick="confirmChangeStatus('success')"
                                             @if($order->status != \App\Helper\ServiceAction::ORDER_IN_PROCESS) disabled @endif>
                                         Success
                                     </button>
                                     <button data-id="{{ $order->id }}" type="button" class="btn btn-warning status-cancel"
                                             id="btn-cancel-{{$order->id}}"
-                                            onclick="confirmChangeStatus('cancel')"
                                             @if($order->status != \App\Helper\ServiceAction::ORDER_IN_PROCESS) disabled @endif>
                                         Cancel
                                     </button>

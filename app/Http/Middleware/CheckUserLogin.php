@@ -21,6 +21,8 @@ class CheckUserLogin
             $user = Auth::user();
             if ($user->role == User::ROLE_CLIENT) {
                 return $next($request);
+            } else {
+                return redirect()->route('index');
             }
         } else {
             return redirect()->route('index');

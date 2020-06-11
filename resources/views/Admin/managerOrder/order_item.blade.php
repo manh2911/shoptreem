@@ -18,29 +18,39 @@
                         <th>Last Price</th>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+
                     </tbody>
                 </table>
 
                 <div class="row">
-                    <strong>Total Origin Price:</strong>
-                    <div>&emsp;9000</div>
+                    <div class="col-lg-4 show-inline">
+                        <strong>Total Origin Price:&emsp;</strong>
+                        <div id="total_origin_price"></div>
+                    </div>
+                    <div class="col-lg-8 show-inline">
+                        <strong>Receiver:&emsp;</strong>
+                        <div id="receiver"></div>
+                    </div>
                 </div>
                 <div class="row">
-                    <strong>Total Discount:</strong>
-                    <div>&emsp;9000</div>
+                    <div class="col-lg-4 show-inline">
+                        <strong>Total Discount:&emsp;</strong>
+                        <div id="total_discount"></div>
+                    </div>
+                    <div class="col-lg-8 show-inline">
+                        <strong>Phone:&emsp;</strong>
+                        <div id="phone"></div>
+                    </div>
                 </div>
                 <div class="row">
-                    <strong>Total Price:</strong>
-                    <div>&emsp;9000</div>
+                    <div class="col-lg-4 show-inline">
+                        <strong>Total Price:&emsp;</strong>
+                        <div id="total_price"></div>
+                    </div>
+                    <div class="col-lg-8 show-inline">
+                        <strong>Address:&emsp;</strong>
+                        <div id="address"></div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
